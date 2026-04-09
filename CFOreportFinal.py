@@ -56,6 +56,20 @@ plt.tight_layout()
 plt.show()
 plt.close()
 
+#Bar chart
+department_costs = df.groupby('department')['cost'].sum()
+x=[]
+departments = df["department"].unique()
+for i in range(len(departments)):
+    x.append(departments[i])
+y=[]
+for i in range(len(departments)):
+    y.append(department_costs.iloc[i])
+
+plt.bar(x,y)
+plt.ylim(1800000,2500000)
+plt.show()
+
 #################### Top/Bottom Spending ####################
 # 1. Sort the Departments by spending
 sortedDeps = result.sort_values(by='cost', ascending=False)
